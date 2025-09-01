@@ -23,3 +23,18 @@ vim.keymap.set("n", "gi", vim.diagnostic.open_float, {silent = true})
 
 vim.keymap.set("n", "ga", "<cmd>AerialToggle!<CR>")
 
+-- Kiwi & Nvim-Tree
+local VAULT = vim.fs.normalize(vim.fn.expand("~/Notes"))
+local api = require("nvim-tree.api")
+
+vim.keymap.set("n", "<leader>ww", function()
+  require("kiwi").open_wiki_index()
+
+  vim.schedule(function()
+    if not api.tree.is_visible() then
+      api.tree.open()
+    end
+    api.tree.change_root(VAULT)
+    api.tree.find_file({ open = false, focus = false, buf = 0 })
+  end)
+end, { desc = "Open Kiwi index and sync NvimTree root" })
