@@ -23,3 +23,11 @@ vim.opt.incsearch = true -- search as characters are entered
 vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
+-- Undo
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.local/state/nvim/undo//")
+
+-- Backup
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.expand("~/.local/state/nvim/backup//")

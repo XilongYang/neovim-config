@@ -141,10 +141,15 @@ require("lazy").setup({
       }
       },
       keys = {
-          { "<leader>ww", ":lua require(\"kiwi\").open_wiki_index()<cr>", desc = "Open Wiki index" },
           { "T", ":lua require(\"kiwi\").todo.toggle()<cr>", desc = "Toggle Markdown Task" }
       },
       lazy = true
+    },
+    {
+      "keaising/im-select.nvim",
+      config = function()
+          require("im_select").setup({})
+      end,
     }
 })
 
