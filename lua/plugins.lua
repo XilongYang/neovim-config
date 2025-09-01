@@ -131,6 +131,20 @@ require("lazy").setup({
          "nvim-treesitter/nvim-treesitter",
          "nvim-tree/nvim-web-devicons"
       }
+    },
+    {
+      'serenevoid/kiwi.nvim',
+      opts = {
+      {
+          name = "notes",
+          path = "Notes"
+      }
+      },
+      keys = {
+          { "<leader>ww", ":lua require(\"kiwi\").open_wiki_index()<cr>", desc = "Open Wiki index" },
+          { "T", ":lua require(\"kiwi\").todo.toggle()<cr>", desc = "Toggle Markdown Task" }
+      },
+      lazy = true
     }
 })
 
