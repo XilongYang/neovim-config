@@ -31,3 +31,22 @@ vim.opt.undodir = vim.fn.expand("~/.local/state/nvim/undo//")
 -- Backup
 vim.opt.backup = true
 vim.opt.backupdir = vim.fn.expand("~/.local/state/nvim/backup//")
+
+-- Autosave Notes
+vim.api.nvim_create_autocmd({"BufLeave", "FocusLost"}, {
+    callback = function(args)
+        local bufpath = vim.fn.expand(args.file)
+        if bufpath:find(vim.fn.expand("~/Notes"), 1, true) then
+            vim.cmd("silent! update")
+        end
+    end,
+})
+
+-- 在 markdown 文件里，用 Enter 跳转到光标下的链接
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.keymap.set("n", "<CR>", "gf", { buffer = true, silent = true })
+  end,
+})
+
