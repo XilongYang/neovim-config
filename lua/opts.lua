@@ -42,11 +42,3 @@ vim.api.nvim_create_autocmd({"BufLeave", "FocusLost"}, {
     end,
 })
 
--- 在 markdown 文件里，用 Enter 跳转到光标下的链接
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.keymap.set("n", "<CR>", "gf", { buffer = true, silent = true })
-  end,
-})
-

@@ -21,3 +21,9 @@ vim.keymap.set('n', 'gx', ':ToggleTerm<CR>', {silent = true})
 
 vim.keymap.set("n", "ga", "<cmd>AerialToggle!<CR>")
 
+vim.keymap.set("n", "<CR>", function()
+  if not require("mdlink").open_md_link_under_cursor() then
+    local cr = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+    vim.api.nvim_feedkeys(cr, "n", false)
+  end
+end, { noremap = true, silent = true })
