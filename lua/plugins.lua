@@ -19,7 +19,7 @@ require("lazy").setup({
         priority = 1000,
         opts = {},
     },
-    {"github/copilot.vim"},
+    {"zbirenbaum/copilot.lua"},
     {"h-hg/fcitx.nvim"},
     {"neovim/nvim-lspconfig"},
     {"nvim-tree/nvim-tree.lua"},
@@ -103,5 +103,12 @@ require("aerial").setup({
     vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
   end,
+})
+
+require("copilot").setup({
+  suggestion = {
+  enabled = true,
+  auto_trigger = true,
+  },
 })
 

@@ -27,3 +27,4 @@ vim.keymap.set("n", "<CR>", function()
     vim.api.nvim_feedkeys(cr, "n", false)
   end
 end, { noremap = true, silent = true })
+
