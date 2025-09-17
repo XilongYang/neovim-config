@@ -19,6 +19,7 @@ require("lazy").setup({
         priority = 1000,
         opts = {},
     },
+    {"github/copilot.vim"},
     {"h-hg/fcitx.nvim"},
     {"neovim/nvim-lspconfig"},
     {"nvim-tree/nvim-tree.lua"},
