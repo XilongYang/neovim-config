@@ -21,7 +21,6 @@ require("lazy").setup({
     },
     {"zbirenbaum/copilot.lua"},
     {"h-hg/fcitx.nvim"},
-    {"neovim/nvim-lspconfig"},
     {"nvim-tree/nvim-tree.lua"},
     {'akinsho/toggleterm.nvim', version = "*", config = true},
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
