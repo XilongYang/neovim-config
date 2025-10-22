@@ -4,21 +4,21 @@ local M = {}
 function link_under_cursor(line)
   local pos  = vim.api.nvim_win_get_cursor(0)      -- {row, col}
   local col  = pos[2] + 1                           -- 1-based
-  if line == "" then return "" end
+  if line == "" then return end
 
   -- 向左找最近的 '['
   local lb
   for i = col, 1, -1 do
     if line:sub(i, i) == "[" then lb = i; break end
   end
-  if not lb then return "" end
+  if not lb then return end
 
   -- 向右找最近的 ')'
   local rp
   for i = col, #line do
     if line:sub(i, i) == ")" then rp = i; break end
   end
-  if not rp or rp <= lb then return "" end
+  if not rp or rp <= lb then return end
 
   return lb, rp
 end
@@ -27,8 +27,8 @@ end
 function M.open_md_link_under_cursor()
   local line = vim.api.nvim_get_current_line()
   local lb, rp = link_under_cursor(line)
+  if not lb or not rp then return false end
   local seg = line:sub(lb, rp)
-  if seg == "" then return false end
 
   -- 取 () 内路径
   local path = seg:match("%b[]%(([^)]+)%)")
@@ -57,8 +57,8 @@ end
 function M.fix_md_link_under_cursor()
   local line = vim.api.nvim_get_current_line()
   local lb, rp = link_under_cursor(line)
+  if not lb or not rp then return false end
   local seg = line:sub(lb, rp)
-  if seg == "" then return false end
 
   -- 取 [] 内路径
   -- 检查格式是否匹配[text]()
@@ -75,6 +75,7 @@ function M.fix_md_link_under_cursor()
   -- 替换文件中的该部分
   local new_line = line:sub(1, lb - 1) .. new_seg .. line:sub(rp + 1)
   vim.api.nvim_set_current_line(new_line)
+  return true
 end
 
 return M
