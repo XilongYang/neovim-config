@@ -52,11 +52,11 @@ require("lazy").setup({
        version = "*",
        opts = {
            keymap = {
-               preset = "enter",
+               preset = "super-tab",
                ["<Up>"] = { "select_prev", "fallback" },
                ["<Down>"] = { "select_next", "fallback" },
-               ["<Tab>"] = { "select_next", "fallback" },
-               ["<S-Tab>"] = { "select_prev", "fallback" },
+               ["j"] = { "select_next", "fallback" },
+               ["k"] = { "select_prev", "fallback" },
                ["<C-b>"] = { "scroll_documentation_up", "fallback" },
                ["<C-f>"] = { "scroll_documentation_down", "fallback" },
                ["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
